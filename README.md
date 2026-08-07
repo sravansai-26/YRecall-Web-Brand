@@ -1,12 +1,12 @@
 # YRecall Web Brand
 
-Welcome to the official brand and marketing website repository for **YRecall**, the flagship mobile-first context capture tool designed by the LYFSpot studio. 
+Welcome to the official brand and marketing website repository for **YRecall**, the flagship mobile-first context capture tool designed and developed by the LYFSpot. 
 
 YRecall exists to solve a particular modern frustration: remembering that an answer exists, but not where you left it. This website serves as the digital front door, clearly articulating the product's value proposition, target personas, technical philosophy, and design language.
 
 ## 🌟 Brand Story
 
-LYFSpot is an independent product studio focused on high-quality, consumer-first software for real life. YRecall is our first expression of that belief—a unified place to hold the threads that make up a day.
+LYFSpot is an independent conglomerate ecosystem focused on high-quality, consumer-first software for real life. YRecall is our first expression of that belief — a unified place to hold the threads that make up a day.
 
 *“Simplicity is not a smaller ambition. It is a sharper one.”*
 — Sravan Sai Vuppula, Founder
@@ -91,4 +91,4 @@ YRecall is part of the broader [LYFSpot ecosystem](https://sailyfspot.blogspot.c
 - Designed by [Build with Sravan](https://buildwithsravan.dev).
 
 ---
-© LYFSpot Studio. All rights reserved.
+© LYFSpot. All rights reserved.
