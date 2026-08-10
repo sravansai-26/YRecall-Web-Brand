@@ -1,3 +1,4 @@
+import { ReactLenis } from 'lenis/react';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -35,29 +36,31 @@ function RouteScrollManager() {
 }
 
 const App = () => (
-    <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-            <Toaster />
-            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-                <ThemeProvider>
-                    <RouteScrollManager />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/guides" element={<GuidesPage />} />
-                        <Route path="/company" element={<AboutPage />} />
-                        <Route path="/careers" element={<CareersPage />} />
-                        <Route path="/support" element={<ContactPage />} />
-                        <Route path="/documentation" element={<DocumentationPage />} />
-                        <Route path="/licenses" element={<LicensesPage />} />
-                        <Route path="/release-notes" element={<ReleaseNotesPage />} />
-                        <Route path="/legal/terms" element={<TermsPage />} />
-                        <Route path="/legal/privacy" element={<PrivacyPage />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </ThemeProvider>
-            </BrowserRouter>
-        </TooltipProvider>
-    </QueryClientProvider>
+    <ReactLenis root>
+        <QueryClientProvider client={queryClient}>
+            <TooltipProvider>
+                <Toaster />
+                <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                    <ThemeProvider>
+                        <RouteScrollManager />
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/guides" element={<GuidesPage />} />
+                            <Route path="/company" element={<AboutPage />} />
+                            <Route path="/careers" element={<CareersPage />} />
+                            <Route path="/support" element={<ContactPage />} />
+                            <Route path="/documentation" element={<DocumentationPage />} />
+                            <Route path="/licenses" element={<LicensesPage />} />
+                            <Route path="/release-notes" element={<ReleaseNotesPage />} />
+                            <Route path="/legal/terms" element={<TermsPage />} />
+                            <Route path="/legal/privacy" element={<PrivacyPage />} />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </ThemeProvider>
+                </BrowserRouter>
+            </TooltipProvider>
+        </QueryClientProvider>
+    </ReactLenis>
 );
 
 export default App;
