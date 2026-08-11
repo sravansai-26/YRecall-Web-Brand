@@ -1,6 +1,7 @@
 import { ArrowUpRight, CalendarDays, CheckCircle2, Compass, Sparkles } from "lucide-react";
 import { useEffect } from "react";
 import { Eyebrow, PageFrame, Reveal, SmartLink } from "../components/SiteChrome";
+import { useSEO } from "../hooks/useSEO";
 
 const releases = [
     { version: "1.0.0", date: "August 06, 2026", label: "Public website", icon: Sparkles, summary: "A clearer front door for YRecall and the LYFSpot product story.", changes: ["Introduced the mobile-first YRecall product narrative and download handoff.", "Added dedicated guides, company, careers, support, legal, documentation, licenses, and release-note pages.", "Improved route-aware navigation, responsive layouts, accessibility labels, and metadata for search and agentic browsing."] },
@@ -9,9 +10,8 @@ const releases = [
 ];
 
 export default function ReleaseNotesPage() {
+    useSEO({ title: "YRecall Release Notes", description: "A record of updates, improvements, and fixes to YRecall. We build deliberately.", path: "/release-notes" });
     useEffect(() => {
-        document.title = "Release notes · YRecall";
-        document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", "Follow YRecall product and website updates through the official release notes.");
         window.scrollTo({ top: 0, behavior: "auto" });
     }, []);
     return <PageFrame>

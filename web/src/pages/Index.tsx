@@ -43,6 +43,7 @@ import {
     SRAVAN_PHOTO,
     YRECALL_MARK,
 } from "../components/SiteChrome";
+import { useSEO } from "../hooks/useSEO";
 import { WhyYRecall } from "../sections/home/WhyYRecall";
 import { Voice } from "../sections/home/Voice";
 import { Features } from "../sections/home/Features";
@@ -99,6 +100,7 @@ function ProductCanvas() {
 }
 
 function Home() {
+    useSEO({ title: "YRecall — Your life. Just recall.", description: "YRecall helps you capture the things that matter, organize the moving parts, and return to the right detail when it counts.", path: "/" });
     const heroTitle = "Your life. Just recall.";
     const [typedTitle, setTypedTitle] = useState<string>("");
 
@@ -166,7 +168,7 @@ function Home() {
             <Experience />
 
             <Features />
-            
+
             <ComparisonMatrix />
 
             <Voice />
@@ -174,7 +176,7 @@ function Home() {
             <Story />
 
             <GuidePreview />
-            
+
             <FeaturedInsights />
 
             <Founder />

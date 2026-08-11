@@ -26,8 +26,40 @@
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <script
-    type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"YRecall","applicationCategory":"ProductivityApplication","operatingSystem":"Android, iOS","description":"A calmer mobile system for capturing, organizing, and recalling the details that matter.","brand":{"@type":"Brand","name":"LYFSpot"},"url":"https://yrecall.app/","author":{"@type":"Organization","name":"LYFSpot","url":"https://yrecall.app/"}}</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "YRecall",
+          "url": "https://yrecall.app/"
+        },
+        {
+          "@type": "Organization",
+          "name": "LYFSpot",
+          "url": "https://yrecall.app/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "YRecall",
+          "applicationCategory": "ProductivityApplication",
+          "operatingSystem": "Android, iOS",
+          "description": "A calmer mobile system for capturing, organizing, and recalling the details that matter.",
+          "brand": {
+            "@type": "Brand",
+            "name": "LYFSpot"
+          },
+          "url": "https://yrecall.app/",
+          "author": {
+            "@type": "Organization",
+            "name": "LYFSpot",
+            "url": "https://yrecall.app/"
+          }
+        }
+      ]
+    }
+  </script>
 
   <link rel="icon" type="image/png" href="/yrecall-mark.png" />
   <link rel="apple-touch-icon" href="/yrecall-mark.png" />

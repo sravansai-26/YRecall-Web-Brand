@@ -40,20 +40,12 @@ import {
     SRAVAN_PHOTO,
     YRECALL_MARK,
 } from "../components/SiteChrome";
+import { useSEO } from "../hooks/useSEO";
 
-function usePageTitle(title: string, description: string) {
-    useEffect(() => {
-        document.title = `${title} · YRecall`;
-        const descriptionTag = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-        if (descriptionTag) descriptionTag.content = description;
-        const canonicalTag = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-        if (canonicalTag) canonicalTag.href = `${window.location.origin}${window.location.pathname}`;
-        window.scrollTo({ top: 0, behavior: "instant" });
-    }, [description, title]);
-}
+
 
 export function GuidesPage() {
-    usePageTitle("Guides & resources", "Practical YRecall guides for capturing clearly, organizing lightly, and building a recall rhythm you can trust.");
+    useSEO({ title: "YRecall Guides — Learn YRecall", description: "Practical YRecall guides for capturing clearly, organizing lightly, and building a recall rhythm you can trust.", path: "/guides" });
     const location = useLocation();
     const [openGuide, setOpenGuide] = useState<string>("first-week");
     const guides: Array<{ id: string; category: string; title: string; intro: string; steps: string[] }> = [
@@ -76,7 +68,7 @@ export function GuidesPage() {
 }
 
 export function CompanyPage() {
-    usePageTitle("Company & founder", "Meet LYFSpot, the product studio behind YRecall, and read the founder story behind a calmer way to keep what matters close.");
+    useSEO({ title: "About LYFSpot — Building YRecall", description: "We build tools that ask less of you, not more. Learn about the philosophy behind YRecall and the team at LYFSpot.", path: "/company" });
     return <PageFrame>
         <section className="page-hero page-hero--company"><div className="shell page-hero__inner"><Reveal><Eyebrow>LYFSpot / The ecosystem</Eyebrow><h1>Build products<br /><span>people can keep.</span></h1><p>LYFSpot is the studio behind YRecall—an independent product company focused on high-quality, consumer-first software for real life.</p></Reveal><Reveal className="company-emblem reveal-delay-1"><img src={LYFSPOT_MARK} alt="LYFSpot logo" /><span>LYFSpot</span><small>Design excellence / Privacy / Seamless engineering</small></Reveal></div></section>
         <section className="section section--company-intro"><div className="shell company-intro-grid"><Reveal><Eyebrow>Our point of view</Eyebrow><h2>The best products<br /><span>earn their place.</span></h2></Reveal><Reveal className="company-intro-copy reveal-delay-1"><p>LYFSpot exists to create tools that respect people’s attention. We care about the small decisions: how quickly something opens, how clearly it explains itself, and whether it helps you feel more capable after using it.</p><p>YRecall is our flagship product and our first expression of that belief—a unified place to hold the threads that make up a day.</p><div style={{ marginTop: '24px' }}><a className="inline-link" href="https://sailyfspot.blogspot.com" target="_blank" rel="noreferrer">Visit LYFSpot ecosystem <ArrowUpRight size={15} /></a></div></Reveal></div></section>
@@ -87,7 +79,7 @@ export function CompanyPage() {
 }
 
 export function CareersPage() {
-    usePageTitle("Careers", "Join LYFSpot and help build approachable, dependable products that respect people’s time and attention.");
+    useSEO({ title: "YRecall Careers", description: "Join LYFSpot. We are a tiny, deliberate team building YRecall. Share enough for us to understand your point of view.", path: "/careers" });
     const [submitted, setSubmitted] = useState<boolean>(false);
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
     return <PageFrame>
@@ -104,7 +96,7 @@ function SupportForm({ bug = false }: { bug?: boolean }) {
 }
 
 export function SupportPage() {
-    usePageTitle("Contact desk", "Contact the YRecall support desk for product questions, feedback, partnerships, or bug reports.");
+    useSEO({ title: "Contact desk", description: "Contact the YRecall support desk for product questions, feedback, partnerships, or bug reports.", path: "/support" });
     const [activeForm, setActiveForm] = useState<"contact" | "bug">("contact");
     return <PageFrame>
         <section className="page-hero page-hero--support"><div className="shell page-hero__inner"><Reveal><Eyebrow tone="lime">The contact desk</Eyebrow><h1>Useful help,<br /><span>without the runaround.</span></h1><p>Questions, feedback, or a sharp edge you found in the product—send it our way. We read every message.</p></Reveal><Reveal className="support-orbit reveal-delay-1"><div className="support-orbit__center"><MessageCircle size={25} /></div><span className="support-orbit__label support-orbit__label--one">Questions</span><span className="support-orbit__label support-orbit__label--two">Feedback</span><span className="support-orbit__label support-orbit__label--three">Fixes</span></Reveal></div></section>
@@ -114,7 +106,7 @@ export function SupportPage() {
 
 function LegalLayout({ type }: { type: "terms" | "privacy" }) {
     const isPrivacy = type === "privacy";
-    usePageTitle(isPrivacy ? "Privacy policy" : "Terms of service", isPrivacy ? "Read the YRecall privacy policy in plain language, including the information we collect and your choices." : "Read the YRecall terms of service in plain language for the website and product experience.");
+    useSEO({ title: isPrivacy ? "Privacy policy" : "Terms of service", description: isPrivacy ? "Read the YRecall privacy policy in plain language, including the information we collect and your choices." : "Read the YRecall terms of service in plain language for the website and product experience.", path: isPrivacy ? "/legal/privacy" : "/legal/terms" });
     const sections = isPrivacy ? [
         ["01", "The short version", "YRecall is designed to help you hold on to the information you choose to capture. We aim to collect only what is reasonably needed to provide, secure, maintain, and improve the service. We do not sell your personal information."],
         ["02", "Information you provide", "This may include your email address, account and profile details, notes, tasks, saved references, feedback, support messages, and files you voluntarily attach to a report. We use this information to deliver the feature or response you asked for."],
@@ -148,13 +140,13 @@ export function TermsPage() { return <LegalLayout type="terms" />; }
 export function PrivacyPage() { return <LegalLayout type="privacy" />; }
 
 export function ResetPasswordPage() {
-    usePageTitle("Reset password", "Securely choose a new password for your YRecall account.");
+    useSEO({ title: "Reset password", description: "Securely choose a new password for your YRecall account.", path: "/reset-password" });
     const [submitted, setSubmitted] = useState<boolean>(false);
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setSubmitted(true); };
     return <PageFrame className="page-frame--handoff"><section className="handoff-page"><div className="handoff-grid" /><div className="handoff-card"><SmartLink to="/" className="handoff-brand"><span><img src={YRECALL_MARK} alt="" /></span><strong>YRecall</strong></SmartLink>{submitted ? <div className="handoff-success"><div className="handoff-success__icon"><CheckCircle2 size={29} /></div><Eyebrow tone="lime">Password updated</Eyebrow><h1>You’re back<br /><span>in control.</span></h1><p>You can now login to your YRecall app with your new password.</p><ButtonLink to="/" variant="primary">Return to YRecall <ArrowUpRight size={16} /></ButtonLink></div> : <div className="handoff-form"><Eyebrow>Secure account handoff</Eyebrow><h1>Choose a new<br /><span>password.</span></h1><p>Set a new password for your YRecall account. Keep it unique and easy for you to remember.</p><form onSubmit={handleSubmit}><label>New password<input required type="password" minLength={8} placeholder="At least 8 characters" /></label><label>Confirm password<input required type="password" minLength={8} placeholder="Repeat your new password" /></label><button type="submit" className="button button--primary">Update password <ArrowRight size={16} /></button></form><div className="handoff-foot"><LockKeyhole size={14} /> Your reset link is private to this account.</div></div>}<div className="handoff-footer"><span>YRecall by LYFSpot</span><SmartLink to="/legal/privacy">Privacy</SmartLink><SmartLink to="/support">Need help?</SmartLink></div></div></section></PageFrame>;
 }
 
 export function ConfirmEmailPage() {
-    usePageTitle("Email confirmed", "Your YRecall email is confirmed. Continue building a calmer way to keep what matters close.");
+    useSEO({ title: "Email confirmed", description: "Your YRecall email is confirmed. Continue building a calmer way to keep what matters close.", path: "/confirm-email" });
     return <PageFrame className="page-frame--handoff"><section className="handoff-page"><div className="handoff-grid" /><div className="handoff-card"><SmartLink to="/" className="handoff-brand"><span><img src={YRECALL_MARK} alt="" /></span><strong>YRecall</strong></SmartLink><div className="handoff-form handoff-form--confirmed"><div className="confirmed-orb"><Check size={35} /></div><Eyebrow tone="lime">Email confirmed</Eyebrow><h1>You’re all<br /><span>set.</span></h1><p>Your email is confirmed. Open the YRecall app to continue building a calmer way to keep what matters close.</p><a className="button button--primary" href="mailto:support@yrecall.app?subject=Open%20YRecall">Open the app <ArrowUpRight size={16} /></a><div className="handoff-note"><Sparkles size={14} /> Welcome to a better recall rhythm.</div></div><div className="handoff-footer"><span>YRecall by LYFSpot</span><SmartLink to="/legal/privacy">Privacy</SmartLink><SmartLink to="/support">Need help?</SmartLink></div></div></section></PageFrame>;
 }

@@ -5782,6 +5782,7 @@ img {
 [data-theme="dark"] .footer-socials a {
     background: rgba(255, 255, 255, 0.05);
 }
+
 [data-theme="dark"] .footer-socials a:hover,
 [data-theme="dark"] .footer-socials a:active,
 [data-theme="dark"] .footer-socials a:focus {
@@ -5797,7 +5798,7 @@ img {
     margin-left: 0;
 }
 
-.nav-link.nav-link--external + .nav-link.nav-link--external {
+.nav-link.nav-link--external+.nav-link.nav-link--external {
     margin-left: -18px;
 }
 
@@ -5810,6 +5811,7 @@ img {
 [data-theme="dark"] .nav-link.nav-link--external {
     background: #145043;
 }
+
 [data-theme="dark"] .nav-link.nav-link--external:hover {
     background: #0f3d33;
 }
@@ -5862,8 +5864,15 @@ img {
 }
 
 @keyframes waitlist-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .waitlist-step-label {
@@ -5922,6 +5931,7 @@ img {
 [data-theme="dark"] .waitlist-tool-pill:hover {
     background: rgba(255, 255, 255, 0.05);
 }
+
 [data-theme="dark"] .waitlist-tool-pill.is-selected {
     color: var(--navy);
 }
@@ -6035,7 +6045,8 @@ img {
     gap: 16px;
 }
 
-.matrix-header, .matrix-row {
+.matrix-header,
+.matrix-row {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1.5fr;
     gap: 24px;
@@ -6104,14 +6115,18 @@ img {
     .matrix-table-wrapper {
         padding: 20px;
     }
-    .matrix-header, .matrix-row {
+
+    .matrix-header,
+    .matrix-row {
         grid-template-columns: 1fr 1fr;
         gap: 16px;
     }
+
     .matrix-col--label {
         grid-column: 1 / -1;
         margin-bottom: -8px;
     }
+
     .matrix-header .matrix-col--label {
         display: none;
     }
@@ -6229,8 +6244,15 @@ img {
 }
 
 @keyframes workflow-step-in {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .workflow-step-icon {
@@ -6250,6 +6272,7 @@ img {
     .workflows-tabs {
         flex-direction: column;
     }
+
     .workflow-content {
         padding: 24px;
     }

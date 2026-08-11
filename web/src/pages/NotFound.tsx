@@ -2,8 +2,10 @@ import { ArrowUpRight, Search } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ButtonLink, Eyebrow, PageFrame, SmartLink } from "../components/SiteChrome";
+import { useSEO } from "../hooks/useSEO";
 
 const NotFound = () => {
+    useSEO({ title: "Page Not Found", description: "The page you are looking for does not exist.", path: "/404" });
     const location = useLocation();
 
     useEffect(() => {
