@@ -303,7 +303,7 @@ export function SiteFooter() {
                     <div>
                         <SmartLink to="/legal/terms">Terms of Service</SmartLink>
                         <SmartLink to="/legal/privacy">Privacy Policy</SmartLink>
-                        <a href="mailto:lyfspot@zohomail.in">lyfspot@zohomail.in</a>
+                        <a href="mailto:hello@yrecall.app">hello@yrecall.app</a>
                     </div>
                 </div>
             </div>
