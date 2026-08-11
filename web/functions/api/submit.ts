@@ -103,30 +103,46 @@ export async function onRequestPost(context: any) {
 
     // 1. Send to Company
     const companyHtml = `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
-        <img src="https://yrecall.app/yrecall-mark.png" alt="YRecall Logo" width="40" height="40" style="margin-bottom: 24px; display: block;" />
-        <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 24px; letter-spacing: -0.01em;">${templateTitle}</h2>
-        
-        <div style="background: #f7f7f7; padding: 24px; border-radius: 8px; margin-bottom: 32px; font-size: 14px; line-height: 1.5;">
-          <p style="margin: 0 0 12px 0;"><strong>Name:</strong> ${name}</p>
-          <p style="margin: 0 0 12px 0;"><strong>Email:</strong> ${email}</p>
-          ${category ? `<p style="margin: 0 0 12px 0;"><strong>Category/Role:</strong> ${category}</p>` : ''}
-          ${portfolio ? `<p style="margin: 0 0 12px 0;"><strong>Portfolio:</strong> <a href="${portfolio}">${portfolio}</a></p>` : ''}
-          ${linkedin ? `<p style="margin: 0 0 12px 0;"><strong>LinkedIn:</strong> <a href="${linkedin}">${linkedin}</a></p>` : ''}
-          <p style="margin: 0 0 12px 0;"><strong>Ref ID:</strong> ${referenceId}</p>
-          <p style="margin: 0;"><strong>Submitted:</strong> ${timestamp}</p>
+      <div style="background-color: #fff8f1; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); overflow: hidden;">
+          <tr>
+            <td style="padding: 40px; border-bottom: 2px solid #a3f69c;">
+              <img src="https://yrecall.app/yrecall-mark.png" alt="YRecall Logo" width="40" height="40" style="display: block; margin-bottom: 24px;" />
+              <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #111111; letter-spacing: -0.5px;">${templateTitle}</h2>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 40px;">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 32px;">
+                <tr><td style="padding-bottom: 8px;"><strong style="color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Sender Details</strong></td></tr>
+                <tr><td style="padding: 16px; background-color: #f9f9f9; border-radius: 8px;">
+                  <p style="margin: 0 0 8px 0; font-size: 15px; color: #111111;"><strong>Name:</strong> ${name}</p>
+                  <p style="margin: 0 0 8px 0; font-size: 15px; color: #111111;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #111111;">${email}</a></p>
+                  ${category ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #111111;"><strong>Category:</strong> ${category}</p>` : ''}
+                  ${portfolio ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #111111;"><strong>Portfolio:</strong> <a href="${portfolio}" style="color: #111111;">${portfolio}</a></p>` : ''}
+                  ${linkedin ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #111111;"><strong>LinkedIn:</strong> <a href="${linkedin}" style="color: #111111;">${linkedin}</a></p>` : ''}
+                </td></tr>
+              </table>
+              
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 32px;">
+                <tr><td style="padding-bottom: 8px;"><strong style="color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Message</strong></td></tr>
+                <tr><td style="padding: 24px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; font-size: 15px; line-height: 1.6; color: #111111; white-space: pre-wrap;">${message}</td></tr>
+              </table>
+
+              ${attachments.length > 0 ? `<p style="margin: 0 0 32px 0; font-size: 14px; color: #666666;">📎 Attachment included with this email.</p>` : ''}
+              
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr><td style="padding-top: 24px; border-top: 1px solid #eaeaea;">
+                  <p style="margin: 0 0 4px 0; font-size: 13px; color: #888888;"><strong>Ref ID:</strong> ${referenceId}</p>
+                  <p style="margin: 0; font-size: 13px; color: #888888;"><strong>Time:</strong> ${timestamp}</p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <div style="text-align: center; margin-top: 32px; padding: 0 20px;">
+          <p style="font-size: 12px; color: #888888; margin: 0; line-height: 1.5;">YRecall Internal System<br>Built by LYFSpot</p>
         </div>
-
-        <h3 style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 16px;">Message</h3>
-        <div style="font-size: 15px; line-height: 1.6; white-space: pre-wrap; margin-bottom: 40px;">${message}</div>
-
-        ${attachments.length > 0 ? '<p style="font-size: 14px; color: #666; margin-bottom: 40px;">📎 Attachment included with this email.</p>' : ''}
-        
-        <hr style="border: none; border-top: 1px solid #eaeaea; margin-bottom: 24px;" />
-        <p style="font-size: 12px; color: #888; margin: 0;">
-          YRecall — Your Life. Just Recall.<br>
-          Built by LYFSpot
-        </p>
       </div>
     `;
 
@@ -155,32 +171,40 @@ export async function onRequestPost(context: any) {
     }
 
     const userHtml = `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
-        <img src="https://yrecall.app/yrecall-mark.png" alt="YRecall Logo" width="40" height="40" style="margin-bottom: 32px; display: block;" />
-        
-        <h2 style="font-size: 20px; font-weight: 500; margin-bottom: 24px; letter-spacing: -0.01em;">We received your message.</h2>
-        
-        <p style="font-size: 15px; line-height: 1.6; margin-bottom: 24px;">Hi ${name},</p>
-        <p style="font-size: 15px; line-height: 1.6; margin-bottom: 32px;">${ackMessage}</p>
-        
-        <div style="background: #f7f7f7; padding: 20px; border-radius: 8px; font-size: 13px; color: #666; margin-bottom: 40px;">
-          <p style="margin: 0 0 8px 0;"><strong>Reference ID:</strong> ${referenceId}</p>
-          <p style="margin: 0;"><strong>Subject:</strong> ${category || emailSubject}</p>
-        </div>
-        
-        <hr style="border: none; border-top: 1px solid #eaeaea; margin-bottom: 24px;" />
-        <div style="font-size: 12px; color: #888; line-height: 1.5;">
-          <p style="margin: 0 0 8px 0;">
-            <strong>YRecall</strong><br>
-            Your Life. Just Recall.<br>
-            Built by LYFSpot
-          </p>
-          <p style="margin: 0;">
-            <a href="https://yrecall.app" style="color: #888; text-decoration: none;">Website</a> · 
-            <a href="https://yrecall.app/support" style="color: #888; text-decoration: none;">Support</a> · 
-            <a href="https://yrecall.app/legal/privacy" style="color: #888; text-decoration: none;">Privacy</a>
-          </p>
-        </div>
+      <div style="background-color: #fff8f1; padding: 40px 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); overflow: hidden;">
+          <tr>
+            <td style="padding: 40px; text-align: center; border-bottom: 1px solid #eaeaea;">
+              <img src="https://yrecall.app/yrecall-mark.png" alt="YRecall Logo" width="48" height="48" style="display: inline-block; margin-bottom: 24px;" />
+              <h2 style="margin: 0; font-size: 22px; font-weight: 500; color: #111111; letter-spacing: -0.5px;">We received your message.</h2>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 40px;">
+              <p style="margin: 0 0 24px 0; font-size: 16px; line-height: 1.6; color: #111111;">Hi ${name},</p>
+              <p style="margin: 0 0 32px 0; font-size: 16px; line-height: 1.6; color: #444444;">${ackMessage}</p>
+              
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #f9f9f9; border-radius: 8px; border-left: 4px solid #a3f69c;">
+                <tr>
+                  <td style="padding: 20px;">
+                    <p style="margin: 0 0 8px 0; font-size: 14px; color: #111111;"><strong>Reference ID:</strong> ${referenceId}</p>
+                    <p style="margin: 0; font-size: 14px; color: #111111;"><strong>Subject:</strong> ${category || emailSubject}</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 32px 40px; background-color: #fafafa; border-top: 1px solid #eaeaea; text-align: center;">
+              <p style="margin: 0 0 16px 0; font-size: 13px; color: #111111; font-weight: 600;">YRecall by LYFSpot</p>
+              <p style="margin: 0; font-size: 13px;">
+                <a href="https://yrecall.app" style="color: #666666; text-decoration: none; margin: 0 8px;">Website</a> &middot;
+                <a href="https://yrecall.app/support" style="color: #666666; text-decoration: none; margin: 0 8px;">Support</a> &middot;
+                <a href="https://yrecall.app/legal/privacy" style="color: #666666; text-decoration: none; margin: 0 8px;">Privacy</a>
+              </p>
+            </td>
+          </tr>
+        </table>
       </div>
     `;
 
