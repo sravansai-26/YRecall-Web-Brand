@@ -91,7 +91,7 @@ export function CareersPage() {
         const form = event.currentTarget;
         const formData = new FormData(form);
         formData.append('type', 'careers');
-        
+
         try {
             const response = await fetch('/api/submit', { method: 'POST', body: formData });
             if (!response.ok) {
@@ -123,7 +123,7 @@ function SupportForm({ bug = false }: { bug?: boolean }) {
         const form = event.currentTarget;
         const formData = new FormData(form);
         formData.append('type', bug ? 'bug' : 'support');
-        
+
         try {
             const response = await fetch('/api/submit', { method: 'POST', body: formData });
             if (!response.ok) {
