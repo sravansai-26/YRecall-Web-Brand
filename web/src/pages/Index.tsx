@@ -63,7 +63,7 @@ function ProductCanvas() {
                 </div>
                 <div className="window-body">
                     <aside className="window-sidebar">
-                        <div className="sidebar-mini-logo"><img src={YRECALL_MARK} alt="" /></div>
+                        <div className="sidebar-mini-logo"><img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="" /></div>
                         <div className="sidebar-line sidebar-line--active"><Command size={13} /> Overview</div>
                         <div className="sidebar-line"><FolderOpen size={13} /> Projects</div>
                         <div className="sidebar-line"><CalendarDays size={13} /> Moments</div>
@@ -152,11 +152,11 @@ function Home() {
                 <div className="shell brand-constellation__inner">
                     <span className="brand-constellation__label">A LYFSpot ecosystem / made with intent</span>
                     <div className="brand-constellation__marks">
-                        <div className="ecosystem-mark ecosystem-mark--yrecall"><span><img src={YRECALL_MARK} alt="" /></span><div><strong>YRecall</strong><small>Flagship product</small></div></div>
+                        <div className="ecosystem-mark ecosystem-mark--yrecall"><span><img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="" /></span><div><strong>YRecall</strong><small>Flagship product</small></div></div>
                         <div className="ecosystem-connector" aria-hidden="true" />
-                        <a className="ecosystem-mark ecosystem-mark--lyfspot" href="https://sailyfspot.blogspot.com" target="_blank" rel="noreferrer"><span><img src={LYFSPOT_MARK} alt="" /></span><div><strong>LYFSpot</strong><small>Product ecosystem</small></div><ArrowUpRight size={14} /></a>
+                        <a className="ecosystem-mark ecosystem-mark--lyfspot" href="https://sailyfspot.blogspot.com" target="_blank" rel="noreferrer"><span><img width="500" height="500" loading="lazy" decoding="async" src={LYFSPOT_MARK} alt="" /></span><div><strong>LYFSpot</strong><small>Product ecosystem</small></div><ArrowUpRight size={14} /></a>
                         <div className="ecosystem-connector" aria-hidden="true" />
-                        <a className="ecosystem-mark ecosystem-mark--portfolio" href="https://buildwithsravan.dev" target="_blank" rel="noreferrer"><span><img src={BUILDWITHSRAVAN_MARK} alt="" /></span><div><strong>Build with Sravan</strong><small>Founder / portfolio</small></div><ArrowUpRight size={14} /></a>
+                        <a className="ecosystem-mark ecosystem-mark--portfolio" href="https://buildwithsravan.dev" target="_blank" rel="noreferrer"><span><img width="192" height="192" loading="lazy" decoding="async" src={BUILDWITHSRAVAN_MARK} alt="" /></span><div><strong>Build with Sravan</strong><small>Founder / portfolio</small></div><ArrowUpRight size={14} /></a>
                     </div>
                 </div>
             </section>

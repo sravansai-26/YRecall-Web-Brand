@@ -109,7 +109,7 @@ export function Download() {
                     <div className="download-phone">
                         <div className="phone-speaker" />
                         <div className="phone-screen">
-                            <div className="phone-appbar"><span className="phone-mark"><img src={YRECALL_MARK} alt="" /></span><span>Today</span><span className="phone-avatar">S</span></div>
+                            <div className="phone-appbar"><span className="phone-mark"><img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="" /></span><span>Today</span><span className="phone-avatar">S</span></div>
                             <div className="phone-date">TUESDAY · 06 AUG</div>
                             <h3>Keep the signal.<br /><span>Let go of the noise.</span></h3>
                             <div className="phone-task"><span className="phone-check"><Check size={11} /></span><span>Review the launch notes</span><small>Now</small></div>

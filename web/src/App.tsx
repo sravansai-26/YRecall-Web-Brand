@@ -1,23 +1,23 @@
 import { ReactLenis } from 'lenis/react';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { scrollToHash, ThemeProvider } from "./components/SiteChrome";
 
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import AboutPage from "./pages/about";
-import CareersPage from "./pages/careers";
-import DocumentationPage from "./pages/Documentation";
-import LicensesPage from "./pages/Licenses";
-import ContactPage from "./pages/contact";
-import GuidesPage from "./pages/guides";
-import PrivacyPage from "./pages/privacy";
-import ReleaseNotesPage from "./pages/ReleaseNotes";
-import TermsPage from "./pages/terms";
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const AboutPage = lazy(() => import("./pages/about"));
+const CareersPage = lazy(() => import("./pages/careers"));
+const DocumentationPage = lazy(() => import("./pages/Documentation"));
+const LicensesPage = lazy(() => import("./pages/Licenses"));
+const ContactPage = lazy(() => import("./pages/contact"));
+const GuidesPage = lazy(() => import("./pages/guides"));
+const PrivacyPage = lazy(() => import("./pages/privacy"));
+const ReleaseNotesPage = lazy(() => import("./pages/ReleaseNotes"));
+const TermsPage = lazy(() => import("./pages/terms"));
 
 const queryClient = new QueryClient();
 
@@ -35,6 +35,12 @@ function RouteScrollManager() {
     return null;
 }
 
+const FallbackLoader = () => (
+    <div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "var(--color-bg)", color: "var(--color-text-muted)" }}>
+        Loading...
+    </div>
+);
+
 const App = () => (
     <ReactLenis root>
         <QueryClientProvider client={queryClient}>
@@ -43,19 +49,21 @@ const App = () => (
                 <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                     <ThemeProvider>
                         <RouteScrollManager />
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/guides" element={<GuidesPage />} />
-                            <Route path="/company" element={<AboutPage />} />
-                            <Route path="/careers" element={<CareersPage />} />
-                            <Route path="/support" element={<ContactPage />} />
-                            <Route path="/documentation" element={<DocumentationPage />} />
-                            <Route path="/licenses" element={<LicensesPage />} />
-                            <Route path="/release-notes" element={<ReleaseNotesPage />} />
-                            <Route path="/legal/terms" element={<TermsPage />} />
-                            <Route path="/legal/privacy" element={<PrivacyPage />} />
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
+                        <Suspense fallback={<FallbackLoader />}>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/guides" element={<GuidesPage />} />
+                                <Route path="/company" element={<AboutPage />} />
+                                <Route path="/careers" element={<CareersPage />} />
+                                <Route path="/support" element={<ContactPage />} />
+                                <Route path="/documentation" element={<DocumentationPage />} />
+                                <Route path="/licenses" element={<LicensesPage />} />
+                                <Route path="/release-notes" element={<ReleaseNotesPage />} />
+                                <Route path="/legal/terms" element={<TermsPage />} />
+                                <Route path="/legal/privacy" element={<PrivacyPage />} />
+                                <Route path="*" element={<NotFound />} />
+                            </Routes>
+                        </Suspense>
                     </ThemeProvider>
                 </BrowserRouter>
             </TooltipProvider>

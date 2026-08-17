@@ -1,0 +1,11 @@
+# YRecall
+YRecall is a calmer mobile system for capturing, organizing, and recalling the details that matter. Built by LYFSpot.
+
+## Agent Guidelines
+- Canonical Website: `https://yrecall.app/`
+- Documentation: `https://yrecall.app/documentation`
+- Guides: `https://yrecall.app/guides`
+- Support: `https://yrecall.app/support`
+
+YRecall is designed with thoughtful privacy and simple, human workflows.
+LYFSpot is the product ecosystem behind YRecall.

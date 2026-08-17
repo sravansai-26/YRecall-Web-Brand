@@ -2,10 +2,10 @@ import { Link, useLocation, useNavigate, type LinkProps } from "react-router-dom
 import { ArrowUpRight, Menu, Moon, Sun, X, Twitter, Facebook, Linkedin, Github } from "lucide-react";
 import { createContext, useContext, useEffect, useRef, useState, type ComponentProps, type HTMLAttributes, type ReactNode } from "react";
 
-export const YRECALL_MARK = "/yrecall-mark.png";
-export const LYFSPOT_MARK = "/lyfspot-mark-transparent.png";
-export const SRAVAN_PHOTO = "/sravan-sai-vuppula.png";
-export const BUILDWITHSRAVAN_MARK = "/buildwithsravan-mark.png";
+export const YRECALL_MARK = "/yrecall-mark.webp";
+export const LYFSPOT_MARK = "/lyfspot-mark-transparent.webp";
+export const SRAVAN_PHOTO = "/sravan-sai-vuppula.webp";
+export const BUILDWITHSRAVAN_MARK = "/buildwithsravan-mark.webp";
 
 type Theme = "light" | "dark";
 
@@ -85,7 +85,7 @@ export function BrandLockup({ compact = false }: { compact?: boolean }) {
     return (
         <SmartLink className={`brand-lockup${compact ? " brand-lockup--compact" : ""}`} to="/" aria-label="YRecall home">
             <span className="brand-lockup__mark" aria-hidden="true">
-                <img src={YRECALL_MARK} alt="" />
+                <img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="" />
             </span>
             <span className="brand-lockup__wordmark">
                 <strong>YRecall</strong>
