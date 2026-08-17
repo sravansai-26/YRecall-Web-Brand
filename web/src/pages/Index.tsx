@@ -63,7 +63,7 @@ function ProductCanvas() {
                 </div>
                 <div className="window-body">
                     <aside className="window-sidebar">
-                        <div className="sidebar-mini-logo"><img width="1920" height="1920" fetchpriority="high" src={YRECALL_MARK} alt="" /></div>
+                        <div className="sidebar-mini-logo"><img width="1920" height="1920" fetchPriority="high" src={YRECALL_MARK} alt="" /></div>
                         <div className="sidebar-line sidebar-line--active"><Command size={13} /> Overview</div>
                         <div className="sidebar-line"><FolderOpen size={13} /> Projects</div>
                         <div className="sidebar-line"><CalendarDays size={13} /> Moments</div>
