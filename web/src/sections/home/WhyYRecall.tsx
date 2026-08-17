@@ -21,7 +21,7 @@ export function WhyYRecall() {
                 <div className="why-grid">
                     <Reveal className="friction-card">
                         <div className="card-index">THE FRICTION</div>
-                        <h3>Small gaps become<br /><span>big drains.</span></h3>
+                        <h2>Small gaps become<br /><span>big drains.</span></h2>
                         <p>Every missing detail asks you to stop, retrace, and reconstruct. That hidden tax is where momentum goes.</p>
                         <div className="friction-list">
                             {frictionPoints.map((point) => (
@@ -39,7 +39,7 @@ export function WhyYRecall() {
                             <span className="map-path map-path--three" />
                         </div>
                         <div className="card-index">THE SHIFT</div>
-                        <h3>One connective<br /><span>memory layer.</span></h3>
+                        <h2>One connective<br /><span>memory layer.</span></h2>
                         <p>YRecall brings thoughts, tasks, references, and moments into a single flow you can actually keep up with.</p>
                         <div className="solution-foot"><span className="solution-badge"><Network size={15} /> connected by intent</span><SmartLink to="/guides">Explore the system <ArrowUpRight size={15} /></SmartLink></div>
                     </Reveal>

@@ -58,7 +58,7 @@ export function Download() {
                             {waitlistState === "tools" && (
                                 <div className="waitlist-step animate-in">
                                     <span className="waitlist-step-label">Step 1 of 2</span>
-                                    <h4>What do you currently use?</h4>
+                                    <h3>What do you currently use?</h3>
                                     <p>Select your fragmented stack to help us personalize your onboarding.</p>
                                     <div className="waitlist-tools">
                                         {toolsList.map(t => (
@@ -85,7 +85,7 @@ export function Download() {
                             {waitlistState === "email" && (
                                 <div className="waitlist-step animate-in">
                                     <span className="waitlist-step-label">Step 2 of 2</span>
-                                    <h4>Where should we send your invite?</h4>
+                                    <h3>Where should we send your invite?</h3>
                                     <p>We'll notify you as soon as the iOS beta is ready for your device.</p>
                                     <form className="waitlist-email-form" onSubmit={(e) => { e.preventDefault(); setWaitlistState("success"); }}>
                                         <input type="email" placeholder="your@email.com" required />
@@ -97,7 +97,7 @@ export function Download() {
                             {waitlistState === "success" && (
                                 <div className="waitlist-step waitlist-success animate-in">
                                     <div className="success-icon"><Check size={20} /></div>
-                                    <h4>You're on the list!</h4>
+                                    <h3>You're on the list!</h3>
                                     <p>Thanks for joining. We'll be in touch soon with your early access invite.</p>
                                 </div>
                             )}

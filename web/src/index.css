@@ -5671,8 +5671,8 @@ img {
     flex-direction: column;
     gap: 16px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 }
 
 .insight-card:hover {
@@ -5824,8 +5824,8 @@ img {
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 16px;
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     box-shadow: 0 4px 24px rgba(0, 30, 64, 0.04);
 }
 
@@ -6030,8 +6030,8 @@ img {
     border: 1px solid rgba(0, 0, 0, 0.04);
     border-radius: 24px;
     padding: 32px;
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
 }
 
 [data-theme="dark"] .matrix-table-wrapper {
@@ -6187,8 +6187,8 @@ img {
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 24px;
     padding: 32px;
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     box-shadow: 0 8px 32px rgba(0, 30, 64, 0.04);
     text-align: left;
 }

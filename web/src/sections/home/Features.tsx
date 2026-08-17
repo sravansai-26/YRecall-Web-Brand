@@ -36,7 +36,7 @@ export function Features() {
                     </div>
                     <div className={`feature-panel feature-panel--${selectedFeature.color}`}>
                         <div className="feature-panel__visual"><div className="feature-panel__grid" /><div className="feature-icon-orb"><FeatureIcon size={44} strokeWidth={1.35} /></div><span className="orb-caption">{selectedFeature.label.toUpperCase()} / 04</span></div>
-                        <div className="feature-panel__copy"><span className="panel-overline">YRECALL / {selectedFeature.label.toUpperCase()}</span><h3>{selectedFeature.title}</h3><p>{selectedFeature.body}</p><SmartLink to="/guides">Read the guide <ArrowUpRight size={15} /></SmartLink></div>
+                        <div className="feature-panel__copy"><span className="panel-overline">YRECALL / {selectedFeature.label.toUpperCase()}</span><h2>{selectedFeature.title}</h2><p>{selectedFeature.body}</p><SmartLink to="/guides">Read the guide <ArrowUpRight size={15} /></SmartLink></div>
                     </div>
                 </Reveal>
                 <div className="feature-micro-grid">
