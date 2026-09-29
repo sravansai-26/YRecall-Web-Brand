@@ -32,9 +32,9 @@ export function Download() {
                     <p>YRecall is a mobile-first product. Start on Android today, and keep an eye out for iOS as we take the same level of care there.</p>
                     
                     <div className="download-actions">
-                        <a className="store-badge" href="mailto:support@yrecall.app?subject=YRecall%20Android%20access">
-                            <span className="store-badge__icon"><Play size={17} fill="currentColor" /></span>
-                            <span><small>GET IT ON</small><strong>Google Play</strong></span>
+                        <a className="store-badge" href="https://github.com/sravansai-26/YRecall/releases/download/v1.0.0/YRecall-v1.0.0.apk">
+                            <span className="store-badge__icon"><DownloadIcon size={17} /></span>
+                            <span><small>OFFICIAL APK (v1.0.0)</small><strong>Download for Android</strong></span>
                         </a>
                         
                         {waitlistState === "idle" && (
@@ -43,13 +43,19 @@ export function Download() {
                                 <span><small>COMING SOON</small><strong>Join iOS Waitlist</strong></span>
                             </button>
                         )}
-                        
-                        {waitlistState === "idle" && (
-                            <a className="download-text-link" href="mailto:support@yrecall.app?subject=Download%20YRecall">
-                                <DownloadIcon size={16} /> Download our app <ArrowUpRight size={14} />
-                            </a>
-                        )}
                     </div>
+                    
+                    {waitlistState === "idle" && (
+                        <div style={{ marginTop: "16px", fontSize: "12px", color: "rgba(255, 255, 255, 0.65)", lineHeight: "1.6" }}>
+                            <ul style={{ listStyleType: "none", padding: 0, margin: "0 0 8px 0" }}>
+                                <li>✓ Pre-release Official APK directly from GitHub</li>
+                                <li>✓ OTA updates supported via EAS Update</li>
+                            </ul>
+                            <a className="download-text-link" style={{ marginLeft: 0 }} href="https://github.com/sravansai-26/YRecall/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+                                View release details <ArrowUpRight size={12} style={{ marginLeft: "2px" }} />
+                            </a>
+                        </div>
+                    )}
 
                     {waitlistState !== "idle" && (
                         <div className="ios-waitlist-form">
