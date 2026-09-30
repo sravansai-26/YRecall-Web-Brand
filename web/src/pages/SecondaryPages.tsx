@@ -93,6 +93,24 @@ export function CareersPage() {
         const formData = new FormData(form);
         formData.append('type', 'careers');
 
+        const fileInput = form.elements.namedItem('attachment') as HTMLInputElement;
+        if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+            setError("A resume or work sample is required.");
+            setSubmitting(false);
+            return;
+        }
+        
+        const file = fileInput.files[0];
+        try {
+            const buffer = await file.arrayBuffer();
+            const blob = new Blob([buffer], { type: file.type });
+            formData.set('attachment', blob, file.name);
+        } catch (err) {
+            setError("Failed to read the attached file. If you are uploading from cloud storage, please ensure the file is downloaded to your device first.");
+            setSubmitting(false);
+            return;
+        }
+
         try {
             const response = await fetch('/api/submit', { method: 'POST', body: formData });
             if (!response.ok) {
@@ -108,7 +126,7 @@ export function CareersPage() {
     };
     return <PageFrame>
         <section className="page-hero page-hero--careers"><div className="shell page-hero__inner"><Reveal><Eyebrow tone="lime">Careers at LYFSpot</Eyebrow><h1>Bring your<br /><span>best thinking.</span></h1><p>We are building a small, high-agency team around products that respect people’s time. If you care about the details and the outcome, we want to hear from you.</p></Reveal><Reveal className="careers-aside reveal-delay-1"><div className="careers-aside__top"><UsersRound size={20} /><span>OPEN DOOR POLICY</span></div><strong>Tell us where<br />you could add signal.</strong><span>We review every thoughtful note.</span></Reveal></div></section>
-        <section className="section section--careers"><div className="shell careers-layout"><Reveal className="careers-copy"><Eyebrow>Make an introduction</Eyebrow><h2>No performative<br /><span>hoops.</span></h2><p>Share enough for us to understand your point of view. A portfolio, a profile, or a clear note is often more useful than a perfect cover letter.</p><div className="careers-list"><span><Check size={15} /> Product & design</span><span><Check size={15} /> Engineering</span><span><Check size={15} /> Operations & growth</span></div><a className="email-link" href="mailto:careers@yrecall.app">Prefer email? careers@yrecall.app <ArrowUpRight size={15} /></a></Reveal><Reveal className="form-card reveal-delay-1">{submitted ? <div className="form-success"><CheckCircle2 size={30} /><h3>Thanks for reaching out.</h3><p>Your introduction is in the right place. We’ll take a considered look and get back to you.</p><ButtonLink to="/" variant="secondary">Back to YRecall <ArrowUpRight size={15} /></ButtonLink></div> : <form onSubmit={handleSubmit}><div className="form-card__header"><span>CAREER INTRODUCTION / 01</span><small>Fields marked * are required</small></div>{error && <div className="form-error"><CircleAlert size={14} /> {error}</div>}<div className="form-row"><label>Full name *<input name="name" required type="text" placeholder="Your name" disabled={submitting} /></label><label>Email address *<input name="email" required type="email" placeholder="you@email.com" disabled={submitting} /></label></div><label>Area of interest *<select name="category" required defaultValue="" disabled={submitting}><option value="" disabled>Choose an area</option><option>Product & design</option><option>Engineering</option><option>Operations & growth</option><option>Something else</option></select></label><label>What would you like to build with us? *<textarea name="message" required rows={4} placeholder="A short note about your work, your curiosity, or the problem space you care about." disabled={submitting} /></label><div className="form-row"><label>Portfolio URL<input name="portfolio" type="url" placeholder="https://" disabled={submitting} /></label><label>LinkedIn profile<input name="linkedin" type="url" placeholder="https://linkedin.com/in/" disabled={submitting} /></label></div><label className="file-field"><span>Resume or work sample</span><span className="file-drop"><Upload size={17} /> {fileName ? <strong>{fileName}</strong> : "Choose a file"} <small>PDF, DOCX up to 10MB</small><input name="attachment" type="file" accept=".pdf,.doc,.docx" disabled={submitting} onChange={(e) => setFileName(e.target.files?.[0]?.name || null)} /></span></label><button className="button button--primary form-submit" type="submit" disabled={submitting}>{submitting ? "Sending..." : "Send introduction"} <Send size={16} /></button></form>}</Reveal></div></section>
+        <section className="section section--careers"><div className="shell careers-layout"><Reveal className="careers-copy"><Eyebrow>Make an introduction</Eyebrow><h2>No performative<br /><span>hoops.</span></h2><p>Share enough for us to understand your point of view. A portfolio, a profile, or a clear note is often more useful than a perfect cover letter.</p><div className="careers-list"><span><Check size={15} /> Product & design</span><span><Check size={15} /> Engineering</span><span><Check size={15} /> Operations & growth</span></div><a className="email-link" href="mailto:careers@yrecall.app">Prefer email? careers@yrecall.app <ArrowUpRight size={15} /></a></Reveal><Reveal className="form-card reveal-delay-1">{submitted ? <div className="form-success"><CheckCircle2 size={30} /><h3>Thanks for reaching out.</h3><p>Your introduction is in the right place. We’ll take a considered look and get back to you.</p><ButtonLink to="/" variant="secondary">Back to YRecall <ArrowUpRight size={15} /></ButtonLink></div> : <form onSubmit={handleSubmit}><div className="form-card__header"><span>CAREER INTRODUCTION / 01</span><small>Fields marked * are required</small></div>{error && <div className="form-error"><CircleAlert size={14} /> {error}</div>}<div className="form-row"><label>Full name *<input name="name" required type="text" placeholder="Your name" disabled={submitting} /></label><label>Email address *<input name="email" required type="email" placeholder="you@email.com" disabled={submitting} /></label></div><label>Area of interest *<select name="category" required defaultValue="" disabled={submitting}><option value="" disabled>Choose an area</option><option>Product & design</option><option>Engineering</option><option>Operations & growth</option><option>Something else</option></select></label><label>What would you like to build with us? *<textarea name="message" required rows={4} placeholder="A short note about your work, your curiosity, or the problem space you care about." disabled={submitting} /></label><div className="form-row"><label>Portfolio URL<input name="portfolio" type="url" placeholder="https://" disabled={submitting} /></label><label>LinkedIn profile<input name="linkedin" type="url" placeholder="https://linkedin.com/in/" disabled={submitting} /></label></div><label className="file-field"><span>Resume or work sample <span style={{ color: "#ef4444" }}>*</span></span><span className="file-drop"><Upload size={17} /> {fileName ? <strong>{fileName}</strong> : "Choose a file"} <small>PDF, DOCX up to 10MB</small><input name="attachment" type="file" accept=".pdf,.doc,.docx" disabled={submitting} onChange={(e) => setFileName(e.target.files?.[0]?.name || null)} /></span></label><button className="button button--primary form-submit" type="submit" disabled={submitting}>{submitting ? "Sending..." : "Send introduction"} <Send size={16} /></button></form>}</Reveal></div></section>
     </PageFrame>;
 }
 
@@ -125,6 +143,20 @@ function SupportForm({ bug = false }: { bug?: boolean }) {
         const form = event.currentTarget;
         const formData = new FormData(form);
         formData.append('type', bug ? 'bug' : 'support');
+
+        const fileInput = form.elements.namedItem('attachment') as HTMLInputElement;
+        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            try {
+                const buffer = await file.arrayBuffer();
+                const blob = new Blob([buffer], { type: file.type });
+                formData.set('attachment', blob, file.name);
+            } catch (err) {
+                setError("Failed to read the attached file. If you are uploading from cloud storage, please ensure the file is downloaded to your device first.");
+                setSubmitting(false);
+                return;
+            }
+        }
 
         try {
             const response = await fetch('/api/submit', { method: 'POST', body: formData });
