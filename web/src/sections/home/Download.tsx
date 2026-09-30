@@ -31,18 +31,23 @@ export function Download() {
                     <h2 id="download-title">Bring YRecall<br /><span>where your day goes.</span></h2>
                     <p>YRecall is a mobile-first product. Start on Android today, and keep an eye out for iOS as we take the same level of care there.</p>
                     
-                    <div className="download-actions">
-                        <a className="store-badge" href="https://github.com/sravansai-26/YRecall/releases/download/v1.0.0/YRecall-v1.0.0.apk">
-                            <span className="store-badge__icon"><DownloadIcon size={17} /></span>
-                            <span><small>OFFICIAL APK (v1.0.0)</small><strong>Download for Android</strong></span>
+                    <div className="download-actions" style={{ flexWrap: 'wrap' }}>
+                        <a className="store-badge" href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default', opacity: 0.8 }}>
+                            <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/Google_Play_Store.svg" alt="Google Play" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
+                            <span><small>IN PROGRESS</small><strong>Google Play</strong></span>
                         </a>
                         
                         {waitlistState === "idle" && (
-                            <button className="store-badge" type="button" onClick={() => setWaitlistState("tools")}>
-                                <span className="store-badge__icon"><Smartphone size={18} /></span>
-                                <span><small>COMING SOON</small><strong>Join iOS Waitlist</strong></span>
+                            <button className="store-badge" type="button" onClick={() => setWaitlistState("tools")} style={{ opacity: 0.8 }}>
+                                <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/app-store-logo.png" alt="App Store" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
+                                <span><small>COMING LATER</small><strong>App Store</strong></span>
                             </button>
                         )}
+
+                        <a className="store-badge" href="https://github.com/sravansai-26/YRecall/releases/download/v1.0.0/YRecall-v1.0.0.apk">
+                            <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/yrecall-mark.webp" alt="YRecall" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
+                            <span><small>OFFICIAL APK (v1.0.0)</small><strong>Direct Download</strong></span>
+                        </a>
                     </div>
                     
                     {waitlistState === "idle" && (
