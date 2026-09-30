@@ -30,42 +30,46 @@ export function Download() {
                     <Eyebrow tone="lime">Your next clear step</Eyebrow>
                     <h2 id="download-title">Bring YRecall<br /><span>where your day goes.</span></h2>
                     <p>YRecall is a mobile-first product. Start on Android today, and keep an eye out for iOS as we take the same level of care there.</p>
-                    
-                    <div className="download-actions" style={{ flexWrap: 'wrap' }}>
+
+                    <div className="download-actions" style={{ flexWrap: 'wrap', marginBottom: '32px' }}>
                         <a className="store-badge" href="#" onClick={(e) => e.preventDefault()} style={{ cursor: 'default', opacity: 0.8 }}>
-                            <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/Google_Play_Store.svg" alt="Google Play" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
+                            <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/google-play.png" alt="Google Play" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
                             <span><small>IN PROGRESS</small><strong>Google Play</strong></span>
                         </a>
-                        
+
                         {waitlistState === "idle" && (
                             <button className="store-badge" type="button" onClick={() => setWaitlistState("tools")} style={{ opacity: 0.8 }}>
                                 <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/app-store-logo.png" alt="App Store" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
                                 <span><small>COMING LATER</small><strong>App Store</strong></span>
                             </button>
                         )}
-
-                        <a className="store-badge" href="https://github.com/sravansai-26/YRecall/releases/download/v1.0.0/YRecall-v1.0.0.apk">
-                            <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/yrecall-mark.webp" alt="YRecall" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
-                            <span><small>OFFICIAL APK (v1.0.0)</small><strong>Direct Download</strong></span>
-                        </a>
                     </div>
-                    
+
                     {waitlistState === "idle" && (
-                        <div style={{ marginTop: "16px", fontSize: "12px", color: "rgba(255, 255, 255, 0.65)", lineHeight: "1.6" }}>
-                            <ul style={{ listStyleType: "none", padding: 0, margin: "0 0 8px 0" }}>
-                                <li>✓ Pre-release Official APK directly from GitHub</li>
-                                <li>✓ OTA updates supported via EAS Update</li>
-                            </ul>
-                            <a className="download-text-link" style={{ marginLeft: 0 }} href="https://github.com/sravansai-26/YRecall/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
-                                View release details <ArrowUpRight size={12} style={{ marginLeft: "2px" }} />
-                            </a>
+                        <div style={{ padding: "20px", background: "rgba(255, 255, 255, 0.03)", borderRadius: "12px", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+                            <h4 style={{ margin: "0 0 16px 0", fontSize: "12px", fontWeight: 600, color: "var(--lime, #bbf7d0)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Available now for early access</h4>
+                            <div className="download-actions">
+                                <a className="store-badge" href="https://github.com/sravansai-26/YRecall/releases/download/v1.0.0/YRecall-v1.0.0.apk" style={{ margin: 0 }}>
+                                    <span className="store-badge__icon" style={{ background: 'transparent', padding: 0, border: 'none' }}><img src="/yrecall-mark.webp" alt="YRecall" style={{ width: '22px', height: '22px', objectFit: 'contain' }} /></span>
+                                    <span><small>OFFICIAL APP (v1.0.0)</small><strong>Direct Download</strong></span>
+                                </a>
+                            </div>
+                            <div style={{ marginTop: "16px", fontSize: "13px", color: "rgba(255, 255, 255, 0.65)", lineHeight: "1.6" }}>
+                                <ul style={{ listStyleType: "none", padding: 0, margin: "0 0 12px 0" }}>
+                                    <li style={{ marginBottom: "6px" }}>✓ Pre-release Official APK directly from GitHub</li>
+                                    <li>✓ OTA updates supported via EAS Update</li>
+                                </ul>
+                                <a className="download-text-link" style={{ marginLeft: 0, display: "inline-flex", alignItems: "center", color: "#fff" }} href="https://github.com/sravansai-26/YRecall/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+                                    View release details <ArrowUpRight size={14} style={{ marginLeft: "4px" }} />
+                                </a>
+                            </div>
                         </div>
                     )}
 
                     {waitlistState !== "idle" && (
                         <div className="ios-waitlist-form">
                             <button className="waitlist-close" onClick={() => { setWaitlistState("idle"); setSelectedTools([]); }} aria-label="Close waitlist"><X size={16} /></button>
-                            
+
                             {waitlistState === "tools" && (
                                 <div className="waitlist-step animate-in">
                                     <span className="waitlist-step-label">Step 1 of 2</span>
@@ -73,9 +77,9 @@ export function Download() {
                                     <p>Select your fragmented stack to help us personalize your onboarding.</p>
                                     <div className="waitlist-tools">
                                         {toolsList.map(t => (
-                                            <button 
-                                                key={t} 
-                                                type="button" 
+                                            <button
+                                                key={t}
+                                                type="button"
                                                 className={`waitlist-tool-pill ${selectedTools.includes(t) ? "is-selected" : ""}`}
                                                 onClick={() => toggleTool(t)}
                                             >
@@ -83,7 +87,7 @@ export function Download() {
                                             </button>
                                         ))}
                                     </div>
-                                    <button 
+                                    <button
                                         className="waitlist-next-btn"
                                         onClick={() => setWaitlistState("email")}
                                         disabled={selectedTools.length === 0}
@@ -115,7 +119,7 @@ export function Download() {
                         </div>
                     )}
                 </Reveal>
-                
+
                 <Reveal className="download-visual reveal-delay-1">
                     <div className="download-phone">
                         <div className="phone-speaker" />
