@@ -12,9 +12,9 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-    { quote: "YRecall gives our team a softer landing for the details that usually disappear between meetings. It's transformed how we hand off context.", name: "Sarah Jenkins", role: "Operations Lead", company: "Enterprise Team", initials: "SJ", signal: "Less retracing / More momentum" },
-    { quote: "The promise is simple and valuable: keep the context close enough that the next decision feels obvious. It's the only app I haven't deleted.", name: "David Chen", role: "Product Strategy", company: "Growing Tech Co", initials: "DC", signal: "Clearer handoffs / Better focus" },
-    { quote: "It feels less like another dashboard and more like a reliable memory layer for the work around us. We use it every single day.", name: "Sravan Sai", role: "Founder", company: "LYFSpot", initials: "SS", signal: "One trusted place / Fewer gaps" },
+    { quote: "YRecall gives our team a softer landing for the details that usually disappear between meetings. It's transformed how we hand off context.", name: "Praneeth Reddy", role: "Operations Lead", company: "Adjunct Solutions", initials: "PR", signal: "Less retracing / More momentum" },
+    { quote: "The promise is simple and valuable: keep the context close enough that the next decision feels obvious. It's the only app I haven't deleted.", name: "Sai Balaji Jakka", role: "Full-Stack Developer", company: "HealthTech Mastery Academy", initials: "JJ", signal: "Clearer handoffs / Better focus" },
+    { quote: "It feels less like another dashboard and more like a reliable memory layer for the work around us. We use it every single day.", name: "Sravan Sai Vuppula", role: "Founder", company: "LYFSpot", initials: "SV", signal: "One trusted place / Fewer gaps" },
 ];
 
 export function Voice() {
