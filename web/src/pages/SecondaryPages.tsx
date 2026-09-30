@@ -1,4 +1,5 @@
 import {
+    ArrowLeft,
     ArrowRight,
     ArrowUpRight,
     BriefcaseBusiness,
@@ -171,15 +172,50 @@ function SupportForm({ bug = false }: { bug?: boolean }) {
             setSubmitting(false);
         }
     };
-    if (submitted) return <div className="form-success"><CheckCircle2 size={30} /><h3>{bug ? "Bug report received." : "Message received."}</h3><p>{bug ? "Thank you for helping us make YRecall more dependable. Our team will review the details." : "A member of the YRecall desk will be in touch soon."}</p><button className="button button--secondary" type="button" onClick={() => { setSubmitted(false); setFileName(null); }}>Send another <ArrowRight size={15} /></button></div>;
+    if (submitted) return <div className="form-success"><CheckCircle2 size={30} /><h3>{bug ? "Bug report received." : "Message received."}</h3><p>{bug ? "Thank you for helping us make YRecall more dependable. Our team will review the details." : "A member of the YRecall desk will be in touch soon."}</p><ButtonLink to="/" variant="secondary">Back to YRecall <ArrowUpRight size={15} /></ButtonLink></div>;
     return <form onSubmit={handleSubmit}><div className="form-card__header"><span>{bug ? "BUG REPORT / 02" : "CONTACT DESK / 01"}</span><small>We usually reply within 2 business days</small></div>{error && <div className="form-error"><CircleAlert size={14} /> {error}</div>}<div className="form-row"><label>Your name *<input name="name" required type="text" placeholder="Your name" disabled={submitting} /></label><label>Email address *<input name="email" required type="email" placeholder="you@email.com" disabled={submitting} /></label></div>{bug ? <><label>What happened? *<select name="category" required defaultValue="" disabled={submitting}><option value="" disabled>Choose a category</option><option>Something is not saving</option><option>I cannot sign in</option><option>Something looks wrong</option><option>Other</option></select></label><label>Tell us what you saw *<textarea name="message" required rows={5} placeholder="What were you trying to do? What happened instead?" disabled={submitting} /></label><label className="file-field"><span>Attach a screenshot</span><span className="file-drop"><Paperclip size={17} /> {fileName ? <strong>{fileName}</strong> : "Add an image"} <small>PNG, JPG up to 10MB</small><input name="attachment" type="file" accept="image/png,image/jpeg" disabled={submitting} onChange={(e) => setFileName(e.target.files?.[0]?.name || null)} /></span></label></> : <><label>How can we help? *<select name="category" required defaultValue="" disabled={submitting}><option value="" disabled>Choose a topic</option><option>Getting started</option><option>Account or access</option><option>Product feedback</option><option>Partnerships</option><option>Something else</option></select></label><label>Message *<textarea name="message" required rows={5} placeholder="Tell us a little about what you need." disabled={submitting} /></label></>}<button className="button button--primary form-submit" type="submit" disabled={submitting}>{submitting ? "Sending..." : (bug ? "Send bug report" : "Send message")} <Send size={16} /></button></form>;
 }
 
 export function SupportPage() {
+    const [activeForm, setActiveForm] = useState<"none" | "contact" | "bug">("none");
     useSEO({ title: "Contact desk", description: "Contact the YRecall support desk for product questions, feedback, partnerships, or bug reports.", path: "/support" });
     return <PageFrame>
         <section className="page-hero page-hero--support"><div className="shell page-hero__inner"><Reveal><Eyebrow tone="lime">The contact desk</Eyebrow><h1>Useful help,<br /><span>without the runaround.</span></h1><p>Questions, feedback, or a sharp edge you found in the product—send it our way. We read every message.</p></Reveal><Reveal className="support-orbit reveal-delay-1"><div className="support-orbit__center"><MessageCircle size={25} /></div><span className="support-orbit__label support-orbit__label--one">Questions</span><span className="support-orbit__label support-orbit__label--two">Feedback</span><span className="support-orbit__label support-orbit__label--three">Fixes</span></Reveal></div></section>
-        <section className="section section--support"><div className="shell support-layout"><Reveal className="support-copy"><Eyebrow>Let’s talk</Eyebrow><h2>Human on<br /><span>the other side.</span></h2><p>YRecall is an early product, and your perspective helps shape what it becomes. Tell us what is working, what is missing, or what you expected to happen.</p><div className="support-contact-list"><a href="mailto:support@yrecall.app"><span><Mail size={17} /></span><div><small>Product support</small><strong>support@yrecall.app</strong></div><ArrowUpRight size={15} /></a><a href="mailto:contact@yrecall.app"><span><HeartHandshake size={17} /></span><div><small>General contact</small><strong>contact@yrecall.app</strong></div><ArrowUpRight size={15} /></a><a href="mailto:contact@buildwithsravan.dev"><span><BriefcaseBusiness size={17} /></span><div><small>Founder / portfolio</small><strong>contact@buildwithsravan.dev</strong></div><ArrowUpRight size={15} /></a></div></Reveal><div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}><Reveal className="form-card support-form-card" id="contact" style={{ scrollMarginTop: '100px' }}><SupportForm /></Reveal><Reveal className="form-card support-form-card" id="bug" style={{ scrollMarginTop: '100px' }}><SupportForm bug /></Reveal></div></div></section>
+        <section className="section section--support"><div className="shell support-layout"><Reveal className="support-copy"><Eyebrow>Let’s talk</Eyebrow><h2>Human on<br /><span>the other side.</span></h2><p>YRecall is an early product, and your perspective helps shape what it becomes. Tell us what is working, what is missing, or what you expected to happen.</p><div className="support-contact-list"><a href="mailto:support@yrecall.app"><span><Mail size={17} /></span><div><small>Product support</small><strong>support@yrecall.app</strong></div><ArrowUpRight size={15} /></a><a href="mailto:contact@yrecall.app"><span><HeartHandshake size={17} /></span><div><small>General contact</small><strong>contact@yrecall.app</strong></div><ArrowUpRight size={15} /></a><a href="mailto:contact@buildwithsravan.dev"><span><BriefcaseBusiness size={17} /></span><div><small>Founder / portfolio</small><strong>contact@buildwithsravan.dev</strong></div><ArrowUpRight size={15} /></a></div></Reveal><div style={{ display: 'flex', flexDirection: 'column', gap: '48px', width: '100%' }}>
+            
+            {activeForm === "none" && (
+                <Reveal className="form-card support-form-card" style={{ display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '60px 30px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px', color: 'var(--lime, #bbf7d0)' }}><MessageCircle size={36} /></div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <h3 style={{ fontSize: '24px', fontWeight: 500, margin: 0 }}>How can we help?</h3>
+                        <p style={{ color: 'var(--text-dim)', margin: 0, maxWidth: '320px', lineHeight: 1.5, fontSize: '15px' }}>Choose the right path so your message reaches the correct person immediately.</p>
+                    </div>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '360px' }}>
+                        <button className="button button--primary" style={{ width: '100%', justifyContent: 'space-between', padding: '16px 20px', fontSize: '15px' }} onClick={() => setActiveForm('contact')}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><MessageCircle size={18} /> General Contact Desk</span>
+                            <ArrowRight size={16} />
+                        </button>
+                        <button className="button button--secondary" style={{ width: '100%', justifyContent: 'space-between', padding: '16px 20px', fontSize: '15px', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)' }} onClick={() => setActiveForm('bug')}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><CircleAlert size={18} /> Report a Bug</span>
+                            <ArrowRight size={16} />
+                        </button>
+                    </div>
+                </Reveal>
+            )}
+
+            {activeForm !== "none" && (
+                <Reveal className="form-card support-form-card" id={activeForm} style={{ scrollMarginTop: '100px' }}>
+                    <div style={{ marginBottom: '24px' }}>
+                        <button onClick={() => setActiveForm('none')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-dim)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, transition: 'color 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.color = '#ffffff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-dim)'}>
+                            <ArrowLeft size={14} /> Back to options
+                        </button>
+                    </div>
+                    <SupportForm bug={activeForm === "bug"} />
+                </Reveal>
+            )}
+
+        </div></div></section>
     </PageFrame>;
 }
 
