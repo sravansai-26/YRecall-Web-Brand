@@ -207,7 +207,7 @@ export function SupportPage() {
             {activeForm !== "none" && (
                 <Reveal className="form-card support-form-card" id={activeForm} style={{ scrollMarginTop: '100px' }}>
                     <div style={{ marginBottom: '24px' }}>
-                        <button onClick={() => setActiveForm('none')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-dim)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, transition: 'color 0.2s ease' }} onMouseOver={(e) => e.currentTarget.style.color = '#ffffff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-dim)'}>
+                        <button onClick={() => setActiveForm('none')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#000', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, transition: 'transform 0.1s ease', WebkitTapHighlightColor: 'transparent' }} onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'} onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'} onTouchStart={(e) => e.currentTarget.style.transform = 'scale(0.95)'} onTouchEnd={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                             <ArrowLeft size={14} /> Back to options
                         </button>
                     </div>
