@@ -261,7 +261,7 @@ const footerLinkGroups: Array<{ label: string; links: Array<{ label: string; to:
             { label: "Documentation", to: "/documentation" },
             { label: "Release notes", to: "/release-notes" },
             { label: "Licenses", to: "/licenses" },
-            { label: "Report a bug", to: "/support#bug" },
+            { label: "Report a bug", to: "/support" },
         ],
     },
     {
