@@ -63,7 +63,7 @@ function ProductCanvas() {
                 </div>
                 <div className="window-body">
                     <aside className="window-sidebar">
-                        <div className="sidebar-mini-logo"><img width="1920" height="1920" fetchPriority="high" src={YRECALL_MARK} alt="" /></div>
+                        <div className="sidebar-mini-logo"><img width="1920" height="1920" fetchPriority="high" src={YRECALL_MARK} alt="YRecall App Icon" /></div>
                         <div className="sidebar-line sidebar-line--active"><Command size={13} /> Overview</div>
                         <div className="sidebar-line"><FolderOpen size={13} /> Projects</div>
                         <div className="sidebar-line"><CalendarDays size={13} /> Moments</div>
@@ -126,7 +126,14 @@ function Home() {
                 <div className="shell hero-layout">
                     <Reveal className="hero-copy">
                         <div className="hero-kicker">YRecall by LYFSpot <span className="kicker-divider" /> A calmer digital system</div>
-                        <h1 id="hero-title" aria-label={heroTitle}><span>{typedTitle.slice(0, 10)}</span><br /><em>{typedTitle.slice(10).trimStart()}</em><span className="typing-caret" aria-hidden="true" /></h1>
+                        <h1 id="hero-title">
+                            <span style={{ position: "absolute", width: "1px", height: "1px", padding: 0, margin: "-1px", overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", borderWidth: 0 }}>
+                                {heroTitle}
+                            </span>
+                            <span aria-hidden="true">
+                                <span>{typedTitle.slice(0, 10)}</span><br /><em>{typedTitle.slice(10).trimStart()}</em><span className="typing-caret" />
+                            </span>
+                        </h1>
                         <p className="hero-lede">YRecall by LYFSpot is designed to help you capture the things that matter, organize the moving parts, and return to the right detail when it counts.</p>
                         <div className="hero-actions">
                             <ButtonLink to="/#download" variant="primary">Get the app <ArrowUpRight size={17} /></ButtonLink>
@@ -152,11 +159,11 @@ function Home() {
                 <div className="shell brand-constellation__inner">
                     <span className="brand-constellation__label">A LYFSpot ecosystem / made with intent</span>
                     <div className="brand-constellation__marks">
-                        <div className="ecosystem-mark ecosystem-mark--yrecall"><span><img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="" /></span><div><strong>YRecall</strong><small>Flagship product</small></div></div>
+                        <div className="ecosystem-mark ecosystem-mark--yrecall"><span><img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="YRecall Flagship Logo" /></span><div><strong>YRecall</strong><small>Flagship product</small></div></div>
                         <div className="ecosystem-connector" aria-hidden="true" />
-                        <a className="ecosystem-mark ecosystem-mark--lyfspot" href="https://sailyfspot.blogspot.com" target="_blank" rel="noreferrer"><span><img width="500" height="500" loading="lazy" decoding="async" src={LYFSPOT_MARK} alt="" /></span><div><strong>LYFSpot</strong><small>Product ecosystem</small></div><ArrowUpRight size={14} /></a>
+                        <a className="ecosystem-mark ecosystem-mark--lyfspot" href="https://sailyfspot.blogspot.com" target="_blank" rel="noreferrer"><span><img width="500" height="500" loading="lazy" decoding="async" src={LYFSPOT_MARK} alt="LYFSpot Ecosystem Logo" /></span><div><strong>LYFSpot</strong><small>Product ecosystem</small></div><ArrowUpRight size={14} /></a>
                         <div className="ecosystem-connector" aria-hidden="true" />
-                        <a className="ecosystem-mark ecosystem-mark--portfolio" href="https://buildwithsravan.dev" target="_blank" rel="noreferrer"><span><img width="192" height="192" loading="lazy" decoding="async" src={BUILDWITHSRAVAN_MARK} alt="" /></span><div><strong>Build with Sravan</strong><small>Founder / portfolio</small></div><ArrowUpRight size={14} /></a>
+                        <a className="ecosystem-mark ecosystem-mark--portfolio" href="https://buildwithsravan.dev" target="_blank" rel="noreferrer"><span><img width="192" height="192" loading="lazy" decoding="async" src={BUILDWITHSRAVAN_MARK} alt="Build with Sravan Logo" /></span><div><strong>Build with Sravan</strong><small>Founder / portfolio</small></div><ArrowUpRight size={14} /></a>
                     </div>
                 </div>
             </section>
