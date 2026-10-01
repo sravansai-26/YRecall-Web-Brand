@@ -1,11 +1,22 @@
 # YRecall
-YRecall is a calmer mobile system for capturing, organizing, and recalling the details that matter. Built by LYFSpot.
+YRecall — Your AI-Powered Personal Memory System
 
-## Agent Guidelines
+## What is YRecall?
+YRecall is an AI-powered personal memory system designed to help you capture, organize, search, and recall the information that matters in your life. It acts as a second brain and personal knowledge management tool for your daily life.
+
+## Who develops YRecall?
+YRecall is built by LYFSpot, an independent product company focused on high-quality, consumer-first software for real life. It was founded by Sravan Sai Vuppula.
+
+## What features are currently available?
+Users can capture notes, search their personal memory, organize moments, and reliably retrieve information. It uses a clean, mobile-first interface designed for speed and clarity.
+
+## Is YRecall available on Android?
+Yes, YRecall is available on Android. The official pre-release APK can be downloaded directly from the official website.
+
+## Important Links
 - Canonical Website: `https://yrecall.app/`
 - Documentation: `https://yrecall.app/documentation`
 - Guides: `https://yrecall.app/guides`
-- Support: `https://yrecall.app/support`
-
-YRecall is designed with thoughtful privacy and simple, human workflows.
-LYFSpot is the product ecosystem behind YRecall.
+- Support & Bug Reports: `https://yrecall.app/support`
+- Release Notes: `https://yrecall.app/release-notes`
+- Company: `https://yrecall.app/company`

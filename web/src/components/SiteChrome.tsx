@@ -84,8 +84,8 @@ export function ThemeToggle({ mobile = false }: { mobile?: boolean }) {
 export function BrandLockup({ compact = false }: { compact?: boolean }) {
     return (
         <SmartLink className={`brand-lockup${compact ? " brand-lockup--compact" : ""}`} to="/" aria-label="YRecall home">
-            <span className="brand-lockup__mark" aria-hidden="true">
-                <img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="" />
+            <span className="brand-lockup__mark">
+                <img width="1920" height="1920" loading="lazy" decoding="async" src={YRECALL_MARK} alt="YRecall brand logo" />
             </span>
             <span className="brand-lockup__wordmark">
                 <strong>YRecall</strong>

@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YRecall — Your life. Just recall.</title>
+  <title>YRecall — AI Personal Memory & Life OS | LYFSpot</title>
   <meta name="description"
-    content="YRecall is a calmer mobile system for capturing, organizing, and recalling the details that matter. Built by LYFSpot." />
+    content="Meet YRecall by LYFSpot: an AI-powered personal memory system designed to help you capture, organize, search, and recall the information that matters in your life." />
   <meta name="keywords"
-    content="YRecall, LYFSpot, productivity app, personal organization, recall app, notes and tasks" />
+    content="YRecall, LYFSpot, AI personal memory, personal knowledge management, second brain, AI life OS, recall app, Sravan Sai Vuppula" />
   <meta name="author" content="LYFSpot" />
   <meta name="theme-color" content="#fff8f1" />
   <script>try { var savedTheme = localStorage.getItem('yrecall-theme'); var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; document.documentElement.dataset.theme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light' } catch (error) { document.documentElement.dataset.theme = 'light' }</script>
-  <meta property="og:title" content="YRecall — Your Life. Just Recall." />
+  <meta property="og:title" content="YRecall — AI Personal Memory & Life OS | LYFSpot" />
   <meta property="og:description"
-    content="YRecall is a calmer mobile system for capturing, organizing, and recalling the details that matter. Built by LYFSpot." />
+    content="Meet YRecall by LYFSpot: an AI-powered personal memory system designed to help you capture, organize, search, and recall the information that matters in your life." />
   <meta property="og:url" content="https://yrecall.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="YRecall" />
@@ -27,9 +27,9 @@
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="YRecall — Your Life. Just Recall." />
+  <meta name="twitter:title" content="YRecall — AI Personal Memory & Life OS | LYFSpot" />
   <meta name="twitter:description"
-    content="YRecall is a calmer mobile system for capturing, organizing, and recalling the details that matter. Built by LYFSpot." />
+    content="Meet YRecall by LYFSpot: an AI-powered personal memory system designed to help you capture, organize, search, and recall the information that matters in your life." />
   <meta name="twitter:image" content="https://yrecall.app/yr-og.png" />
   <meta name="twitter:image:alt" content="Preview of YRecall: A calmer mobile system. Explore it now." />
   <link rel="canonical" href="https://yrecall.app/" />
@@ -43,30 +43,43 @@
       "@graph": [
         {
           "@type": "WebSite",
+          "@id": "https://yrecall.app/#website",
           "name": "YRecall",
-          "url": "https://yrecall.app/"
+          "url": "https://yrecall.app/",
+          "publisher": {
+            "@id": "https://yrecall.app/#organization"
+          }
         },
         {
           "@type": "Organization",
+          "@id": "https://yrecall.app/#organization",
           "name": "LYFSpot",
-          "url": "https://yrecall.app/"
+          "url": "https://sailyfspot.blogspot.com",
+          "founder": {
+            "@id": "https://yrecall.app/#founder"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://yrecall.app/#founder",
+          "name": "Sravan Sai Vuppula",
+          "url": "https://buildwithsravan.dev",
+          "jobTitle": "Founder"
         },
         {
           "@type": "SoftwareApplication",
+          "@id": "https://yrecall.app/#software",
           "name": "YRecall",
           "applicationCategory": "ProductivityApplication",
-          "operatingSystem": "Android, iOS",
-          "description": "A calmer mobile system for capturing, organizing, and recalling the details that matter.",
-          "brand": {
-            "@type": "Brand",
-            "name": "LYFSpot"
-          },
+          "operatingSystem": "Android",
+          "description": "An AI-powered personal memory system designed to help you capture, organize, search, and recall the information that matters in your life.",
           "url": "https://yrecall.app/",
           "downloadUrl": "https://github.com/sravansai-26/YRecall/releases/download/v1.0.0/YRecall-v1.0.0.apk",
+          "publisher": {
+            "@id": "https://yrecall.app/#organization"
+          },
           "author": {
-            "@type": "Organization",
-            "name": "LYFSpot",
-            "url": "https://yrecall.app/"
+            "@id": "https://yrecall.app/#organization"
           }
         }
       ]

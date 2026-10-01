@@ -100,8 +100,8 @@ function ProductCanvas() {
 }
 
 function Home() {
-    useSEO({ title: "YRecall — Your life. Just recall.", description: "YRecall helps you capture the things that matter, organize the moving parts, and return to the right detail when it counts.", path: "/" });
-    const heroTitle = "Your life. Just recall.";
+    useSEO({ title: "YRecall — AI Personal Memory & Life OS | LYFSpot", description: "Meet YRecall by LYFSpot: an AI-powered personal memory system designed to help you capture, organize, search, and recall the information that matters in your life.", path: "/" });
+    const heroTitle = "YRecall — Your AI-Powered Personal Memory System";
     const [typedTitle, setTypedTitle] = useState<string>("");
 
     useEffect(() => {
@@ -127,7 +127,7 @@ function Home() {
                     <Reveal className="hero-copy">
                         <div className="hero-kicker">YRecall by LYFSpot <span className="kicker-divider" /> A calmer digital system</div>
                         <h1 id="hero-title" aria-label={heroTitle}><span>{typedTitle.slice(0, 10)}</span><br /><em>{typedTitle.slice(10).trimStart()}</em><span className="typing-caret" aria-hidden="true" /></h1>
-                        <p className="hero-lede">YRecall helps you capture the things that matter, organize the moving parts, and return to the right detail when it counts.</p>
+                        <p className="hero-lede">YRecall by LYFSpot is designed to help you capture the things that matter, organize the moving parts, and return to the right detail when it counts.</p>
                         <div className="hero-actions">
                             <ButtonLink to="/#download" variant="primary">Get the app <ArrowUpRight size={17} /></ButtonLink>
                             <ButtonLink to="/#why" variant="secondary">See how it works <ArrowDownRight size={17} /></ButtonLink>
