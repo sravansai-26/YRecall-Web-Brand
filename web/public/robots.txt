@@ -1,16 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /private/
-Disallow: /admin/
-Disallow: /*?*
 
-# Allow legitimate search engine crawlers to discover public content
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Canonical sitemap reference
 Sitemap: https://yrecall.app/sitemap.xml
