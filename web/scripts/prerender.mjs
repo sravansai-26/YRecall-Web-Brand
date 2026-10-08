@@ -148,12 +148,18 @@ async function prerender() {
         
         console.log(`[${route}] Verified: title=${titleMatch[1].substring(0, 30)}... desc=${descMatch[1].substring(0,30)}...`);
 
-        const dir = path.join(outDir, route);
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir, { recursive: true });
+        if (route === '/') {
+            fs.writeFileSync(path.join(outDir, 'index.html'), content);
+            console.log(`Saved /index.html`);
+        } else {
+            const filePath = path.join(outDir, `${route.substring(1)}.html`);
+            const dir = path.dirname(filePath);
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir, { recursive: true });
+            }
+            fs.writeFileSync(filePath, content);
+            console.log(`Saved ${route}.html`);
         }
-        fs.writeFileSync(path.join(dir, 'index.html'), content);
-        console.log(`Saved ${route}/index.html`);
     }
 
     // Prerender 404
