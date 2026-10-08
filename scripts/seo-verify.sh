@@ -1,25 +1,29 @@
 #!/usr/bin/env bash
 set -u
-CANON="https://yrecall.app"
+CANON=${CANON:-https://yrecall.app}
 PATHS=("/" "/guides" "/company" "/careers" "/support" "/documentation" "/licenses" "/release-notes" "/legal/terms" "/legal/privacy")
 FAIL=0
 bad(){ echo "FAIL: $*"; FAIL=1; }
 ok(){ echo "ok:   $*"; }
 
-echo "## 1. Redirect matrix (every route, every non-canonical variant)"
-for p in "${PATHS[@]}"; do
-  for v in http://yrecall.app http://www.yrecall.app https://www.yrecall.app; do
-    first=$(curl.exe -sS -o /dev/null --max-redirs 0 -w '%{http_code}' "$v$p")
-    read -r hops final code < <(curl.exe -sS -o /dev/null -L --max-redirs 6 -w '%{num_redirects} %{url_effective} %{http_code}' "$v$p")
-    if [[ "$first" =~ ^(301|308)$ && "$hops" == "1" && "$final" == "$CANON$p" && "$code" == "200" ]]; then
-      ok "$v$p -> $first -> $final (1 hop, 200)"
-    else
-      bad "$v$p first=$first hops=$hops final=$final code=$code (want 301/308, 1 hop, $CANON$p, 200)"
-    fi
+if [[ -z "${SKIP_REDIRECT_MATRIX:-}" ]]; then
+  echo "## 1. Redirect matrix (every route, every non-canonical variant)"
+  for p in "${PATHS[@]}"; do
+    for v in http://yrecall.app http://www.yrecall.app https://www.yrecall.app; do
+      first=$(curl.exe -sS -o /dev/null --max-redirs 0 -w '%{http_code}' "$v$p")
+      read -r hops final code < <(curl.exe -sS -o /dev/null -L --max-redirs 6 -w '%{num_redirects} %{url_effective} %{http_code}' "$v$p")
+      if [[ "$first" =~ ^(301|308)$ && "$hops" == "1" && "$final" == "https://yrecall.app$p" && "$code" == "200" ]]; then
+        ok "$v$p -> $first -> $final (1 hop, 200)"
+      else
+        bad "$v$p first=$first hops=$hops final=$final code=$code (want 301/308, 1 hop, https://yrecall.app$p, 200)"
+      fi
+    done
+    c=$(curl.exe -sS -o /dev/null -w '%{http_code}' "https://yrecall.app$p")
+    [[ "$c" == "200" ]] && ok "https://yrecall.app$p 200" || bad "https://yrecall.app$p returned $c"
   done
-  c=$(curl.exe -sS -o /dev/null -w '%{http_code}' "$CANON$p")
-  [[ "$c" == "200" ]] && ok "$CANON$p 200" || bad "$CANON$p returned $c"
-done
+else
+  echo "## 1. Redirect matrix skipped (SKIP_REDIRECT_MATRIX=1)"
+fi
 
 echo "## 2. Unknown URL must 404, not redirect"
 c=$(curl.exe -sS -o /dev/null --max-redirs 0 -w '%{http_code}' "$CANON/this-page-should-not-exist-$RANDOM")
