@@ -1,3 +1,2 @@
-https://www.yrecall.app/* https://yrecall.app/:splat 301
-http://www.yrecall.app/* https://yrecall.app/:splat 301
-http://yrecall.app/* https://yrecall.app/:splat 301
+# Redirects are handled by Cloudflare Bulk Redirects at the zone level.
+# This file is intentionally left blank for path redirects.

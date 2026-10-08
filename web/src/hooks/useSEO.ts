@@ -4,9 +4,10 @@ interface SEOProps {
     title: string;
     description: string;
     path: string;
+    schema?: any;
 }
 
-export function useSEO({ title, description, path }: SEOProps) {
+export function useSEO({ title, description, path, schema }: SEOProps) {
     useEffect(() => {
         // Update title
         document.title = title;
@@ -45,5 +46,19 @@ export function useSEO({ title, description, path }: SEOProps) {
         updateMeta('meta[name="twitter:title"]', 'content', title);
         updateMeta('meta[name="twitter:description"]', 'content', description);
 
-    }, [title, description, path]);
+        // JSON-LD Schema
+        let script = document.querySelector('#seo-schema');
+        if (schema) {
+            if (!script) {
+                script = document.createElement('script');
+                script.id = 'seo-schema';
+                script.setAttribute('type', 'application/ld+json');
+                document.head.appendChild(script);
+            }
+            script.textContent = JSON.stringify(schema);
+        } else if (script) {
+            script.remove();
+        }
+
+    }, [title, description, path, schema]);
 }
